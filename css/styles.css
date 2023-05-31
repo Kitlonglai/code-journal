@@ -1,0 +1,19 @@
+label,
+input,
+textarea {
+  display: block;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.display {
+  max-width: 100%;
+  height: auto;
+}
