@@ -11,16 +11,21 @@ h1 {
 }
 
 h2 {
-  font-size: 50px;
+  font-size: 30px;
 }
 
 header {
   background-color: rgb(83, 29, 119);
-  height: 80px;
+  height: 50px;
 }
 
 label {
   font-weight: 900;
+  margin-bottom: 15px;
+}
+
+input {
+  margin-bottom: 15px;
 }
 
 .button {
@@ -36,6 +41,7 @@ label {
 .display {
   max-width: 100%;
   height: auto;
+  padding-bottom: 15px;
 }
 
 #notes {
