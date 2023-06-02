@@ -30,12 +30,12 @@
       <div data-view="entry-form">
         <form>
           <div class="row">
-            <div class="column-half">
+            <div class="column-full">
               <h2>New Entry</h2>
             </div>
           </div>
           <div class="row">
-            <div class="column-full">
+            <div class="column-half">
               <img class="display" src="images/placeholder-image-square.jpg">
             </div>
           </div>
@@ -44,21 +44,37 @@
               <label for="title">Title</label>
             </div>
           </div>
-          <input required type="text" name="title" id="title">
+          <div class="row">
+            <div class="column-half">
+              <input required type="text" name="title" id="title">
+            </div>
+          </div>
           <div class="row">
             <div class="column-half">
               <label for="photourl">Photo URL</label>
             </div>
           </div>
-          <input required type="url" name="photourl" id="photourl">
           <div class="row">
             <div class="column-half">
-              <label for="notes">Notes</label>
+              <input required type="url" name="photourl" id="photourl">
             </div>
           </div>
-          <input required type="text" name="notes" id="notes"></input>
           <div class="row">
-            <button type="submit">Save</button>
+            <div class="column-full">
+              <label for="notes" class="notes">Notes</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <textarea required name="notes" id="notes"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <div class="button-container">
+                <input type="submit" value="SAVE" class="button">
+              </div>
+            </div>
           </div>
         </form>
       </div>

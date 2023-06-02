@@ -5,15 +5,39 @@ textarea {
   width: 100%;
 }
 
-label {
-  margin-bottom: 15px;
+h1 {
+  font-size: 20px;
+  color: white;
 }
 
-h1 {
-  font-size: 2rem;
+h2 {
+  font-size: 50px;
+}
+
+header {
+  background-color: rgb(83, 29, 119);
+  height: 80px;
+}
+
+label {
+  font-weight: 900;
+}
+
+.button {
+  color: white;
+  background-color: rgb(83, 29, 119);
+  padding: 5px;
+  width: 60px;
+  border-radius: 5px;
+  margin-top: 15px;
+  float: right;
 }
 
 .display {
   max-width: 100%;
   height: auto;
+}
+
+#notes {
+  height: 80px;
 }
