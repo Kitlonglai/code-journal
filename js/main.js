@@ -18,6 +18,10 @@ form.addEventListener('submit', function (event) {
   data.entries.unshift(formInput);
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
   form.reset();
+  const newEntryObject = renderEntry(formInput);
+  const ul = document.querySelector('ul');
+  ul.prepend(newEntryObject);
+  viewSwap('entries');
   toggleNoEntries();
 });
 
@@ -37,23 +41,44 @@ function renderEntry(entry) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const ul = document.querySelector('ul');
-  const noEntries = document.querySelector('#no-entries');
+  viewSwap(data.view);
   for (let i = 0; i < data.entries.length; i++) {
     const domEntry = renderEntry(data.entries[i]);
     ul.appendChild(domEntry);
   }
-  if (data.entries.length === 0) {
-    noEntries.classList.remove('hidden');
-  } else if (noEntries) {
-    noEntries.classList.add('hidden');
-  }
+  toggleNoEntries();
 });
 
 function toggleNoEntries() {
   const noEntries = document.querySelector('#no-entries');
-  if (noEntries.classList.contains('hidden')) {
-    noEntries.classList.remove('hidden');
-  } else {
+  if (data.entries.length > 0) {
     noEntries.classList.add('hidden');
+  } else {
+    noEntries.classList.remove('hidden');
   }
 }
+
+function viewSwap(viewName) {
+  data.view = viewName;
+  const entryFormView = document.querySelector('#entry-form');
+  const entriesView = document.querySelector('#entries');
+  if (viewName === 'entry-form') {
+    entriesView.classList.add('hidden');
+    entryFormView.classList.remove('hidden');
+  } else if (viewName === 'entries') {
+    entryFormView.classList.add('hidden');
+    entriesView.classList.remove('hidden');
+  }
+}
+
+const viewEntries = document.querySelector('#view-entries');
+viewEntries.addEventListener('click', function (event) {
+  event.preventDefault();
+  viewSwap('entries');
+});
+
+const newEntry = document.getElementbyId('new-entry');
+newEntry.addEventListener('click', function (event) {
+  event.preventDefault();
+  viewSwap('entry-form');
+});
