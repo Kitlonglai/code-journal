@@ -22,7 +22,9 @@ form.addEventListener('submit', function (event) {
   const ul = document.querySelector('ul');
   ul.prepend(newEntryObject);
   viewSwap('entries');
-  toggleNoEntries();
+  if (data.entries.length > 0) {
+    toggleNoEntries();
+  }
 });
 
 function renderEntry(entry) {
@@ -46,22 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const domEntry = renderEntry(data.entries[i]);
     ul.appendChild(domEntry);
   }
-  toggleNoEntries();
+  if (data.entries.length === 0) {
+    toggleNoEntries();
+  }
 });
 
 function toggleNoEntries() {
-  const noEntries = document.querySelector('#no-entries');
-  if (data.entries.length > 0) {
-    noEntries.classList.add('hidden');
-  } else {
+  const noEntries = document.getElementbyId('no-entries');
+  if (noEntries.classList.contains('hidden')) {
     noEntries.classList.remove('hidden');
+  } else {
+    noEntries.classList.add('hidden');
   }
 }
 
 function viewSwap(viewName) {
-  data.view = viewName;
-  const entryFormView = document.querySelector('#entry-form');
-  const entriesView = document.querySelector('#entries');
+  viewName = data.view;
+  const entryFormView = document.getElementById('entry-form');
+  const entriesView = document.getElementById('entries');
   if (viewName === 'entry-form') {
     entriesView.classList.add('hidden');
     entryFormView.classList.remove('hidden');
@@ -71,7 +75,7 @@ function viewSwap(viewName) {
   }
 }
 
-const viewEntries = document.querySelector('#view-entries');
+const viewEntries = document.getElementbyId('view-entries');
 viewEntries.addEventListener('click', function (event) {
   event.preventDefault();
   viewSwap('entries');
